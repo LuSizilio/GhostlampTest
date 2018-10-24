@@ -13,8 +13,9 @@ class Registro extends Component {
     e.preventDefault();
     const user = e.target.elements.username.value;
     if(user){
-      axios.get(`https://api.github.com/users/${user}`)
+      axios.get(`http://localhost:3001/usuarios/${user}`)
       .then((res) => {
+        console.log(res);
         const repos = res.data.public_repos;
         this.setState({repos: repos});
     });

@@ -1,0 +1,25 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Sebastian",
+      "login": "Eschweiler",
+      "email": "sebastian@codingthesmartway.com",
+      "senha": "teste"
+    },
+    {
+      "id": 2,
+      "nome": "Steve",
+      "login": "Palmer",
+      "email": "steve@codingthesmartway.com",
+      "senha": "teste"
+    },
+    {
+      "id": 3,
+      "nome": "Ann",
+      "login": "Smith",
+      "email": "ann@codingthesmartway.com",
+      "senha": "teste"
+    }
+  ]
+}
