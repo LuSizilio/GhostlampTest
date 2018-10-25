@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Registro from './Registro';
 import Erro404 from './404';
+import 'antd/dist/antd.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 

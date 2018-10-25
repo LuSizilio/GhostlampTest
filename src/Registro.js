@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import UserForm from './UserForm';
 import { Link } from 'react-router-dom';
+import MovieCard from './components/MovieCard';
 import './App.css';
 
 class Registro extends Component {
@@ -27,6 +28,8 @@ class Registro extends Component {
   render() {
     return (
       <div className="App">
+            <MovieCard src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"/>
+            <MovieCard watched favorite title="Teste" subtitle="Testinho"/>
             <h1>Teste</h1>
             <UserForm getUser={this.getUser}/>
             <Link to="/Registro">Ir para a página sobre \o/</Link>
