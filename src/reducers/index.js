@@ -1,6 +1,8 @@
-import { FavoriteChange } from './FavoriteChange';
+import cards from './cards';
 import { combineReducers } from 'redux';
+import visibilityFilter from './VisibilityFilter'
 
-export const Reducers = combineReducers({
-  clickState: FavoriteChange
-});
+export default combineReducers({
+  cards,
+  visibilityFilter
+})

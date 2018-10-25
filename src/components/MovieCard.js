@@ -1,90 +1,46 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import '../App.css';
 
 import 'antd/dist/antd.css';
-import { Card, Icon, Avatar } from 'antd';
+import { Card, Avatar, Col } from 'antd';
 const { Meta } = Card;
 
-var favoritebtn;
-const clickButton = () => ({
-    type: 'FAVORITE'
-  });
+class MovieCard extends Component {
 
-const Cartao = ({title, subtitle, src, watched, favorite}) => (
-    <Card
+  render() {
+    return (
+      <Col lg={8}>
+      <Card
         style={{ width: 300}}
         
-        cover={src!==""?<img alt="imagem" src={src} />:null}
-        actions={[<div>{watched?"❌":"✔"}</div>, <div onClick={clickButton} style={favorite?{filter: 'grayscale(0%)'}:{filter: 'grayscale(100%)'}}>⭐</div>]}
+        cover={this.props.src!==""?<img alt="img" src={this.props.src} />:null}
+        actions={this.props.ex?null:[<div onClick={this.props.watchbtn}>{this.props.watched?"❌":"✔"}</div>, <div onClick={this.props.favoritebtn} style={this.props.favorited?{filter: 'grayscale(0%)'}:{filter: 'grayscale(100%)'}}>⭐</div>]}
       >
         <Meta
           avatar={
-            <Avatar style={watched?{backgroundColor:'#37c670'}:{backgroundColor:'#c73838'}}>
+            this.props.ex?null:
+            <Avatar style={this.props.watched?{backgroundColor:'#37c670'}:{backgroundColor:'#c73838'}}>
                 <div ></div>
             </Avatar>
           }
-          title={title}
-          description={subtitle}
+          title={this.props.title}
+          description={this.props.subtitle}
         />
-    </Card>
-)
-Cartao.propTypes = {
-    watched: PropTypes.bool.isRequired,
-    favorite: PropTypes.bool.isRequired
+      </Card>
+      </Col>
+    );
+  }
 }
 
-// class Cartao extends Component {
-//     state = {
-//         title: '',
-//         subtitle: '',
-//         src: '',
-//         watched: false,
-//         favorite: false,
-//         favoritebtn: ''
-//     }
-//     inputChange = event => {
-//         this.setState({
-//           favorite: event.target.value         
-//         })
-//         console.log(event);
-//       }
+MovieCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  watched: PropTypes.bool.isRequired,
+  favorited: PropTypes.bool.isRequired,
+  favoritebtn: PropTypes.func.isRequired,
+  watchbtn: PropTypes.func.isRequired
+}
 
-//   render(props) {
-//     const { 
-//         favorited
-//       } = this.props;
-
-    
-
-//     return (
-//       <Card
-//         style={{ width: 300}}
-        
-//         cover={this.props.src?<img alt="imagem" src={this.props.src} />:null}
-//         actions={[<div>{this.props.watched?"❌":"✔"}</div>, <div onChange={this.inputChange} onClick={favoritebtn} style={this.props.favorite?{filter: 'grayscale(0%)'}:{filter: 'grayscale(100%)'}}>⭐</div>]}
-//       >
-//         <Meta
-//           avatar={
-//             <Avatar style={this.props.watched?{backgroundColor:'#37c670'}:{backgroundColor:'#c73838'}}>
-//                 <div ></div>
-//             </Avatar>
-//           }
-//           title={this.props.title}
-//           description={this.props.subtitle}
-//         />
-//       </Card>
-//     );
-//   }
-// }
-
-const mapStateToProps = store => ({
-    favorited: store.favorite
-  });  
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ clickButton }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Cartao);
+export default MovieCard;
