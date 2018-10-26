@@ -2,6 +2,7 @@ import React from 'react'
 import 'antd/dist/antd.css';
 import '../App.css';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import * as firebase from 'firebase';
 
@@ -17,7 +18,9 @@ class NormalLoginForm extends React.Component {
       const promise = auth.signInWithEmailAndPassword(values.email,values.password);
       promise.catch(e => console.log(e.message));
     });
+    
   }
+
 
   render() {
     const { getFieldDecorator } = this.props.form;

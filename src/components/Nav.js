@@ -6,6 +6,7 @@ import '../App.css';
 import {  Menu } from 'antd';
 import { Button } from 'antd';
 import * as firebase from 'firebase';
+import { Link } from 'react-router-dom';
 
 // const Footer = () => (
 //   <Menu mode="horizontal" className='btnas' style={{ lineHeight: '64px', backgroundColor:'#282c34', color:'#FFFFFF'}}>
@@ -59,6 +60,7 @@ class Footer extends Component {
     </Menu.Item>
 
     <Menu.Item className='ant-menu-item menu-float-right'>
+    <Link to='/Login'>
       <Button onClick={() => firebase.auth().signOut()} style={{
       backgroundColor:'#282c34',
       marginLeft: '4px',
@@ -67,6 +69,7 @@ class Footer extends Component {
       outline:'none',
       color:'#ff4040'
     }}>Log Out</Button>
+    </Link>
     </Menu.Item>
   </Menu>
     );
