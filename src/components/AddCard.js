@@ -15,15 +15,15 @@ const CollectionCreateForm = Form.create()(
       return (
         <Modal
           visible={visible}
-          title="Add a new movie"
+          title="Add a new Tv Show"
           okText="Add"
           onCancel={onCancel}
           onOk={onCreate}
         >
           <Form layout="vertical">
-            <FormItem label="Movie Title">
+            <FormItem label="Title">
               {getFieldDecorator('title', {
-                rules: [{ required: true, message: 'Please input the Movie Title!' }],
+                rules: [{ required: true, message: 'Please input the Title!' }],
               })(
                 <Input />
               )}
@@ -61,7 +61,7 @@ class CollectionsPage extends React.Component {
       if (err) {
         return;
       }
-      this.props.dispatch(addCard(values.title,values.description,values.src))
+      this.props.dispatch(addCard(values.title,values.description,values.src,))
       form.resetFields();
       this.setState({ visible: false });
     });
@@ -73,7 +73,7 @@ class CollectionsPage extends React.Component {
   render() {
     return (
       <div className="BtnAdd">
-        <Button type="primary" onClick={this.showModal}>Add New Movie</Button>
+        <Button type="primary" onClick={this.showModal}>Add Tv Show</Button>
         <CollectionCreateForm
           wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}

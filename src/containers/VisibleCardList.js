@@ -12,6 +12,8 @@ const getVisibleCards = (cards, filter) => {
       return cards.filter(t => t.favorited)
     case VisibilityFilters.SHOW_WATCHED:
       return cards.filter(t => t.watched)
+    case VisibilityFilters.SHOW_UNWATCHED:
+      return cards.filter(t => !t.watched)
     default:
         throw new Error('Unknown filter: ' + filter)
   }

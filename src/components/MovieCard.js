@@ -13,17 +13,12 @@ class MovieCard extends Component {
       <Col lg={8}>
       <Card
         style={{ width: 300}}
+        className={this.props.watched?"overlay":null}
         
-        cover={this.props.src!==""?<img alt="img" src={this.props.src} />:null}
-        actions={this.props.ex?null:[<div onClick={this.props.watchbtn}>{this.props.watched?"❌":"✔"}</div>, <div onClick={this.props.favoritebtn} style={this.props.favorited?{filter: 'grayscale(0%)'}:{filter: 'grayscale(100%)'}}>⭐</div>]}
+        cover={<img alt="img" src={this.props.src}/>}
+        actions={[<div onClick={this.props.watchbtn}>{this.props.watched?"✔":"👁"}</div>, <div onClick={this.props.favoritebtn} style={this.props.favorited?{filter: 'grayscale(0%)'}:{filter: 'grayscale(100%)'}}>⭐</div>]}
       >
         <Meta
-          avatar={
-            this.props.ex?null:
-            <Avatar style={this.props.watched?{backgroundColor:'#37c670'}:{backgroundColor:'#c73838'}}>
-                <div ></div>
-            </Avatar>
-          }
           title={this.props.title}
           description={this.props.subtitle}
         />
